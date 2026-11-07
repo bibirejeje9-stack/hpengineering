@@ -1,0 +1,192 @@
+{
+  "services": [
+    {
+      "category": "Architectural Design",
+      "name": "Architectural Plans & Drawings",
+      "subtitle": "Concept to construction documents",
+      "slug": "architectural-plans",
+      "description": "Coordinated architectural drawing sets help project teams communicate the intended work from initial layouts through construction documentation.",
+      "deliverables": "Plans, elevations, details and drawing coordination"
+    },
+    {
+      "category": "Architectural Design",
+      "name": "House & Building Plans",
+      "subtitle": "Custom plans for your site and code",
+      "slug": "house-building-plans",
+      "description": "Residential plan preparation for new homes and additions, reflecting site constraints and project requirements.",
+      "deliverables": "Site-responsive floor plans and drawing packages"
+    },
+    {
+      "category": "Architectural Design",
+      "name": "Floor Plans",
+      "subtitle": "Dimensioned layouts and space planning",
+      "slug": "floor-plans",
+      "description": "Clear, dimensioned plans help contractors, owners and consulting professionals work from the same project information.",
+      "deliverables": "Dimensioned floor plans, room layouts and coordination"
+    },
+    {
+      "category": "Architectural Design",
+      "name": "Elevation Plans",
+      "subtitle": "Exterior and interior elevations",
+      "slug": "elevation-plans",
+      "description": "Accurate building elevations communicate materials, openings, finished heights and architectural intent.",
+      "deliverables": "Exterior elevations and interior elevation sheets"
+    },
+    {
+      "category": "Architectural Design",
+      "name": "Site & Plot Plans",
+      "subtitle": "Setbacks, grading and parking coordination",
+      "slug": "site-plot-plans",
+      "description": "Site documentation brings property constraints, access and building placement into the design discussion.",
+      "deliverables": "Site plans, plot layouts and coordination notes"
+    },
+    {
+      "category": "Architectural Design",
+      "name": "3D Visualization",
+      "subtitle": "Architectural renders and 3D plans",
+      "slug": "3d-visualization",
+      "description": "Architectural visualizations make proposed work easier to discuss with owners and project partners.",
+      "deliverables": "Concept visualization and project presentation views"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Structural Engineering",
+      "subtitle": "Gravity and lateral design considerations",
+      "slug": "structural-engineering",
+      "description": "Project-specific engineering support for residential construction and structural alterations, subject to applicable licensure.",
+      "deliverables": "Structural analysis, technical design and coordination"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Structural Plans & Drawings",
+      "subtitle": "Foundation, framing and details",
+      "slug": "structural-plans",
+      "description": "Structured drawing packages communicate load paths, member layouts and buildable details to the construction team.",
+      "deliverables": "Framing plans, foundation sheets and structural details"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Structural Calculations",
+      "subtitle": "Engineering calculation packages",
+      "slug": "structural-calculations",
+      "description": "Technical calculations document the design basis and support review for a defined structural scope.",
+      "deliverables": "Calculation packages and engineering narratives"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Beam, Header & Post Design",
+      "subtitle": "Openings, girders and point loads",
+      "slug": "beam-header-post-design",
+      "description": "Engineering for openings and structural modifications where load transfer and member sizing matter.",
+      "deliverables": "Beam, post and header design details"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Foundation & Footing Design",
+      "subtitle": "Slabs, footings and stem walls",
+      "slug": "foundation-footing-design",
+      "description": "Foundation design considers the building, available site information and geotechnical recommendations where applicable.",
+      "deliverables": "Foundation layout, footing and reinforcement details"
+    },
+    {
+      "category": "Structural & Engineering",
+      "name": "Engineering Review & Stamping",
+      "subtitle": "Review and sealing where authorized",
+      "slug": "engineering-review-stamping",
+      "description": "Professional engineering review is provided only by an appropriately licensed responsible professional where authorized.",
+      "deliverables": "Defined-scope document review and professional coordination"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "MEP Plans",
+      "subtitle": "Mechanical, electrical and plumbing drawings",
+      "slug": "mep-plans",
+      "description": "Coordinated building-services documentation connects architectural intent with mechanical, electrical and plumbing requirements.",
+      "deliverables": "MEP drafting and consultant coordination"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "HVAC Design & Load Calculations",
+      "subtitle": "Equipment selection and load calculations",
+      "slug": "hvac-load-calculations",
+      "description": "Mechanical documentation can assist system selection and permit submission with qualified professional oversight where required.",
+      "deliverables": "Load calculations and mechanical layouts"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "Full Permit Drawing Sets",
+      "subtitle": "Coordinated submittal documentation",
+      "slug": "full-permit-sets",
+      "description": "Organized drawing sets reduce uncertainty about which sheets and details are ready for agency review.",
+      "deliverables": "Permit drawing coordination and technical revisions"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "ADU Permit, Plans & Engineering",
+      "subtitle": "Detached, attached and garage ADUs",
+      "slug": "adu-permit-plans",
+      "description": "Backyard housing projects bring together architectural, structural and local planning considerations.",
+      "deliverables": "ADU drawings, structural coordination and review responses"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "Garage Conversion",
+      "subtitle": "Existing-space conversion documentation",
+      "slug": "garage-conversion",
+      "description": "Garage conversions frequently require assessment of existing building conditions and code-driven drawing changes.",
+      "deliverables": "Conversion plans and technical coordination"
+    },
+    {
+      "category": "MEP, Permits & Specialties",
+      "name": "Restaurant Drawings",
+      "subtitle": "Commercial alteration documentation",
+      "slug": "restaurant-drawings",
+      "description": "Technical drawing coordination for restaurant alterations, including layout and applicable building-services requirements.",
+      "deliverables": "Commercial drawing and consultant coordination"
+    }
+  ],
+  "industries": [
+    {
+      "slug": "general-contractors",
+      "name": "General Contractors",
+      "headline": "Keep technical questions from holding up the work.",
+      "focus": "Residential additions, framing alterations, custom homes and renovation drawings",
+      "description": "Busy construction teams benefit from a dependable technical partner when project documentation needs attention."
+    },
+    {
+      "slug": "adu-builders",
+      "name": "ADU Builders",
+      "headline": "Site-specific support for every backyard build.",
+      "focus": "Garage conversions, new detached ADUs, foundations and plan-check revisions",
+      "description": "Repeatable ADU workflows still encounter unique properties, site conditions and structural questions."
+    },
+    {
+      "slug": "residential-developers",
+      "name": "Residential Developers",
+      "headline": "Keep multiple residential scopes coordinated.",
+      "focus": "Infill housing, residential additions and multi-unit technical packages",
+      "description": "Developers need clarity about technical scope, consultant responsibilities and documented decisions."
+    },
+    {
+      "slug": "foundation-contractors",
+      "name": "Foundation Contractors",
+      "headline": "Engineering support for the ground your work stands on.",
+      "focus": "Footings, structural concrete, retaining walls and repair details",
+      "description": "Foundation specialists often encounter site and existing-condition questions that require documented design input."
+    },
+    {
+      "slug": "architects-design-studios",
+      "name": "Architects & Design Studios",
+      "headline": "Protect design intent through technical coordination.",
+      "focus": "Building additions, structural drawings and drawing-set changes",
+      "description": "Additional technical capacity can help design studios focus on design decisions and client relationships."
+    },
+    {
+      "slug": "homeowners",
+      "name": "Homeowners",
+      "headline": "Understand the technical next step for your project.",
+      "focus": "Home additions, garage conversions, ADUs and custom homes",
+      "description": "Clear project documentation and scope discussions help owners move toward the right design team."
+    }
+  ]
+}
