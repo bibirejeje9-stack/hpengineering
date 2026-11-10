@@ -1,43 +1,56 @@
-# HP Engineering — complete multi-page website
+# HP Engineering — production upgrade
 
-A responsive, dependency-free **44-page** website built around the supplied HP 3D logo, designed to open immediately as static HTML or deploy to any static hosting platform.
+A 44-page, dependency-free static website with Vercel serverless enquiries. The original HP monogram, navigation and URL paths are preserved.
 
-## Quick preview
+## Deployment
 
-Open `index.html` in a browser, or run:
+Connect GitHub repository `bibirejeje9-stack/hpengineering` to Vercel. Select **Other** framework preset, root directory `/`, and **no build command**. The static HTML site is served directly; Vercel automatically creates the Node serverless function at `/api/inquiry`.
 
-```bash
-python -m http.server 8000
-```
+## Required environment variables
 
-Visit http://localhost:8000. No npm install is required.
+Copy the names from `.env.example` into Vercel Project Settings → Environment Variables. Never place secret values in GitHub.
 
-## Included
+- `RESEND_API_KEY`: Resend transactional email API key.
+- `RESEND_FROM`: a sender address on a domain verified by Resend; e.g. `HP Engineering <enquiries@yourdomain.com>`.
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: Upstash Redis REST credentials for rate limits and deduplication.
+- `PUBLIC_SITE_ORIGIN`: exact public origin, currently `https://hp-engineering.vercel.app`.
 
-- Fully styled home page and desktop/mobile accessible navigation
-- Three-column services mega menu
-- Dedicated Services page + 18 individual service detail pages
-- Six audience-specific pages
-- Project categories and filterable portfolio, with honest demo/placeholder notices
-- About, Service Areas, four resource articles, Contact, Privacy Policy and 404 page
-- Search-friendly page titles and semantic markup
-- Client-side form validation, dependent selection lists, email compose fallback
-- Attached HP monogram logo (`assets/hp-mark.jpg`)
+Resend must authorize the sender domain before live enquiries can be accepted. `peterhenry.engineering@gmail.com` is the destination mailbox, not necessarily a valid Resend sender identity.
 
-## IMPORTANT — Before public deployment
+### Inquiry behavior
 
-The website is a **working front-end**, not a deployed server-side business system. It is not connected to Supabase or Resend. Contact submission opens an email application with a drafted message; it does **not** transmit data in the background. File uploads are deliberately blocked until a secure upload workflow is installed. Do not promise visitors that documents were received.
+- Required fields are validated in the browser and on the server.
+- Five requests per IP-derived hash per hour; duplicate project submissions blocked for 24 hours after acceptance.
+- Honeypot and minimum completion time reduce scripted submissions.
+- The form sends a project enquiry to the business mailbox and best-effort acknowledgement to the visitor.
+- The form returns **503** without configured email/rate-limit credentials. It does not claim success or fall back to a visitor email app.
+- Uploads are intentionally **disabled** until private object storage, security controls and malware scanning are configured. Do not accept project plans through a public file endpoint.
 
-To activate a secure production enquiry system, integrate a server endpoint for validation, rate limiting and spam protection, private storage for project files, transactional email to `peterhenry.engineering@gmail.com`, and a privacy-compliant data retention policy.
+### Enable attachments later
 
-Replace external illustrative Unsplash images with appropriately licensed photos and approved real project photos. Portfolio entries deliberately do not claim that illustrative photos represent completed HP Engineering projects.
+Add private Supabase Storage or an equivalent protected storage system with access-controlled signed URLs and server-side content checks. Implement authentication, file size limits, malware scanning, deletion and retention policies before enabling the upload field.
 
-Before publishing credentials and regulated service claims, verify business identity, California license C 26348, actual authorization in each state, permitted services and any address or individual project claims. The present site intentionally does **not** display the unverified license number, professional history, or company address as established facts.
+## Content and credentials
 
-### Deployment
+The site serves U.S. contractors and residential development professionals. Drafting and coordination outside California are presented subject to applicable professional practice rules. State engineering authorizations and the C 26348 credential are **not claimed as verified** in this codebase. Check licensing with appropriate state boards and verify business identity before publication.
 
-Upload the folder contents to Netlify, Cloudflare Pages, Vercel (static project), GitHub Pages or any HTML server. Paths are relative so pages also work from file:// on a desktop.
+The portfolio displays capabilities rather than invented completed projects. Use `content/case-study-template.json` for approved case studies; do not publish it until verified work and permissions are available.
 
-## Future production upgrades
+## QA checklist
 
-A secure Supabase/Resend backend, authenticated content management, analytics (with consent where required), domain deployment, image optimization and automated accessibility tests are recommended before launch.
+- [x] All 44 existing HTML routes retained.
+- [x] Relative internal navigation and asset paths checked locally.
+- [x] 18 service pages enhanced with technical scope notes.
+- [x] Homepage and service-area copy updated for U.S. contractor focus.
+- [x] Sitemap, robots.txt, canonical and Open Graph metadata generated.
+- [x] Server-side endpoint, validation, rate limiting and transactional mail integration implemented.
+- [ ] Resend account/domain verified and live email delivery tested.
+- [ ] Upstash credentials configured and live rate limiting tested.
+- [ ] End-to-end Vercel form submission tested on published site.
+- [ ] Secure document uploads implemented and security tested.
+- [ ] Real project case studies and professional credentials verified.
+- [ ] Lighthouse, screen-reader and multiple-browser audits completed.
+
+## Privacy / safety
+
+Only store secrets server-side. No client details are intentionally logged by the function. Upstash stores hashed IP-derived rate-limit and anonymous duplicate-check tokens; emails reach the configured transactional provider. The privacy page describes these mechanisms. Review retention requirements and legal disclosures before launch.
