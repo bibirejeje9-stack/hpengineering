@@ -8,8 +8,29 @@ document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))docu
 const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
 document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{const v=btn.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===btn));document.querySelectorAll('[data-category]').forEach(x=>x.classList.toggle('hidden',v!=='all'&&x.dataset.category!==v));}));
 const state=document.getElementById('state-select');if(state){const list='Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada,New Hampshire,New Jersey,New Mexico,New York,North Carolina,North Dakota,Ohio,Oklahoma,Oregon,Pennsylvania,Rhode Island,South Carolina,South Dakota,Tennessee,Texas,Utah,Vermont,Virginia,Washington,West Virginia,Wisconsin,Wyoming,District of Columbia';list.split(',').forEach(x=>{const op=document.createElement('option');op.value=x;op.textContent=x;state.append(op);});}
-const form=document.getElementById('project-form');if(form){form.addEventListener('submit',e=>{e.preventDefault();const feedback=document.getElementById('form-feedback');const input=form.querySelector('[name="email"]');if(!form.checkValidity()){form.reportValidity();feedback.textContent='Please complete the required fields.';return;}
-const files=document.getElementById('attachments');if(files?.files?.length){feedback.textContent='File uploads are not enabled yet. Please email files separately after preparing this enquiry.';return;}
-const data=new FormData(form);const val=k=>String(data.get(k)||'').trim();const body=['New HP Engineering project enquiry','','Name: '+val('fullName'),'Company: '+val('company'),'Email: '+val('email'),'Phone: '+val('phone'),'Client type: '+val('clientType'),'State: '+val('state'),'City: '+val('city'),'Project type: '+val('projectType'),'Service requested: '+val('service'),'Schedule: '+val('schedule'),'Preferred contact: '+val('contactMethod'),'','Project details:',val('description')].join('\n');const subject='HP Engineering enquiry: '+val('projectType')+' — '+val('company').slice(0,50);const url='mailto:peterhenry.engineering@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);feedback.textContent='Your email application will open with the enquiry prepared. Please send it there; nothing has been sent by this website.';window.location.href=url;
-});}
+const form=document.getElementById('project-form');
+if(form){
+  const started=form.querySelector('[name="startedAt"]');if(started)started.value=String(Date.now());
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const feedback=document.getElementById('form-feedback');
+    const submit=form.querySelector('[type="submit"]');
+    if(!form.checkValidity()){form.reportValidity();feedback.textContent='Please complete the required fields.';feedback.dataset.error='true';return;}
+    const raw=Object.fromEntries(new FormData(form).entries());
+    const payload={...raw,consent:form.querySelector('[name="consent"]').checked,startedAt:Number(raw.startedAt)};
+    submit.disabled=true;submit.textContent='Submitting…';feedback.textContent='Sending your project enquiry securely…';feedback.dataset.error='false';
+    try{
+      const resp=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      const outcome=await resp.json().catch(()=>({message:'The server could not process your request.'}));
+      if(!resp.ok||!outcome.ok)throw Error(outcome.message||'Submission failed.');
+      feedback.textContent='Your enquiry has been received. Thank you.';feedback.dataset.error='false';
+      if(window.hpTrack)window.hpTrack('project_inquiry_success');
+      form.reset();if(started)started.value=String(Date.now());
+    }catch(err){feedback.textContent=err.message||'Enquiry unavailable. Please email peterhenry.engineering@gmail.com.';feedback.dataset.error='true';}
+    finally{submit.disabled=false;submit.textContent='Submit Project Enquiry ↗';}
+  });
+  form.addEventListener('focusin',()=>{if(!form.dataset.started){form.dataset.started='1';if(window.hpTrack)window.hpTrack('contact_form_start');}},{once:true});
+}
+window.hpTrack=(event)=>{if(typeof window.va==='function')window.va('event',{name:event});};
+document.querySelectorAll('a[href*="contact.html"]').forEach(link=>link.addEventListener('click',()=>window.hpTrack('primary_contact_cta')));
 })();
